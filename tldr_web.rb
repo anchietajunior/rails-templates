@@ -1,9 +1,10 @@
 # Run the template, e.g.
 # rails new -T -d postgresql -m ../path/to/this/file
-gsub_file 'Gemfile', /^gem 'jsbuilder'/, '# gem \'jsbuilder\''
+gsub_file 'Gemfile', /^gem 'jbuilder'/, '# gem \'jbuilder\''
 
 append_to_file 'Gemfile', <<-RUBY
 gem 'devise'
+gem 'cssbundling-rails'
 
 group :development, :test do
   gem 'rspec-rails'
