@@ -2,7 +2,7 @@
 
 Create Ruby on Rails applications faster than it already is.
 
-## TLDR Template
+## TLDR Template Web
 
 This template includes:
 
@@ -13,9 +13,21 @@ This template includes:
 - [x] FactoryBot
 - [x] Devise
 
-### How to use it?
+### Use it
 
 ```shell
 rails new -T -d postgresql -m ../path/to/template/tldrtemplate.rb
 ```
 
+## TLDR Template Mobile for TurboNative apps
+
+This template includes:
+
+- [x] Bcrypt
+- [x] Strada
+
+### Use it
+
+```shell
+rails new myapp -a propshaft --css tailwind -m ../path/to/template/tldrtemplate.rb
+```
