@@ -1,23 +1,25 @@
+# frozen_string_literal: true
+
 # Run the template, e.g.
-# rails new -T -d postgresql -m ../path/to/this/file
+# rails new -T -d postgresql -a propshaft -css tailwind -m ../path/to/this/file
 gsub_file 'Gemfile', /^gem 'jbuilder'/, '# gem \'jbuilder\''
 
-append_to_file 'Gemfile', <<-RUBY
-gem 'devise'
-gem 'cssbundling-rails'
+append_to_file 'Gemfile', <<~RUBY
+  gem 'devise'
+  gem 'cssbundling-rails'
 
-group :development, :test do
-  gem 'rspec-rails'
-end
+  group :development, :test do
+    gem 'rspec-rails'
+  end
 
-group :test do
-  gem 'factory_bot'
-  gem 'shoulda-matchers'
-  gem 'database_cleaner-active_record'
-  gem 'faker'
-  gem 'vcr'
-  gem 'webmock'
-end
+  group :test do
+    gem 'factory_bot'
+    gem 'shoulda-matchers'
+    gem 'database_cleaner-active_record'
+    gem 'faker'
+    gem 'vcr'
+    gem 'webmock'
+  end
 RUBY
 
 after_bundle do
@@ -29,8 +31,8 @@ after_bundle do
   run 'rails generate rspec:install'
 
   # Enable the spec/support folder
-  gsub_file 'spec/rails_helper.rb', /# Dir\[Rails.root.join\('spec', 'support', '\*\*', '\*\.rb'\)\].sort.each { \|f\| require f \}/, "Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }"
-
+  gsub_file 'spec/rails_helper.rb',
+            /# Dir\[Rails.root.join\('spec', 'support', '\*\*', '\*\.rb'\)\].sort.each { \|f\| require f \}/, "Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }"
 
   # Create spec/support folder
   run 'mkdir -p spec/support'
@@ -76,9 +78,9 @@ after_bundle do
   RUBY
 
   # Devise localhost configs
-  inject_into_file 'config/environments/development.rb', before: "end\n" do <<~RUBY
+  inject_into_file 'config/environments/development.rb', before: "end\n" do
+    <<~RUBY
       config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  RUBY
+    RUBY
   end
 end
-
